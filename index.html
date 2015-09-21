@@ -133,12 +133,19 @@ function draw() {
     	dx = -dx;
     }
 }
-
 setInterval(draw, 10);
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("mousemove", mouseMoveHandler, false);
+document.addEventListener("touchstart", touchStartHandler, false); 
+
+function  touchStartHandler(e){
+    ctx.beginPath();
+    ctx.rect(0,0,300,300);
+    ctx.fill();
+    ctx.closePath();
+}
 
 function keyDownHandler(e) {
     if(e.keyCode == 39) {
