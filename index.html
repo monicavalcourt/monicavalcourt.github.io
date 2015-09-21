@@ -141,10 +141,10 @@ document.addEventListener("mousemove", mouseMoveHandler, false);
 document.addEventListener("touchstart", touchStartHandler, false); 
 
 function  touchStartHandler(e){
-    ctx.beginPath();
-    ctx.rect(0,0,300,300);
-    ctx.fill();
-    ctx.closePath();
+    var relativeX = e.clientX - canvas.offsetLeft;
+    if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth/2;
+    }
 }
 
 function keyDownHandler(e) {
