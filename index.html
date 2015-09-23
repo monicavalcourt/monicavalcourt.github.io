@@ -139,9 +139,30 @@ setInterval(draw, 10);
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("mousemove", mouseMoveHandler, false);
-document.addEventListener("touchmove", touchStartHandler, false); 
+
+document.addEventListener("touchmove", touchMoveHandler, false); 
+document.addEventListener("touchstart", touchStartHandler, false); 
+document.addEventListener("touchend", touchEndHandler, false); 
+
+
+function  touchMoveHandler(e){
+    score = "TOUCH MOVE";
+    var relativeX = e.clientX - canvas.offsetLeft;
+    if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth/2;
+    }
+}
 
 function  touchStartHandler(e){
+    score = "TOUCH START";
+    var relativeX = e.clientX - canvas.offsetLeft;
+    if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth/2;
+    }
+}
+
+function  touchEndHandler(e){
+    score = "TOUCH END";
     var relativeX = e.clientX - canvas.offsetLeft;
     if(relativeX > 0 && relativeX < canvas.width) {
         paddleX = relativeX - paddleWidth/2;
